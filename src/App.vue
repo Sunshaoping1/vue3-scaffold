@@ -14,7 +14,6 @@ import userApi from "@/api/userApi";
 
 <template>
   <div>
-    <!-- <hd-button>pate</hd-button> -->
     <router-view #default="{ Component }">
       <Suspense>
         <template #default>

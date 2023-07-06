@@ -5,21 +5,21 @@
     <div
       class="bg-white w-[720px] translate-y-32 md:translate-y-0 md:grid grid-cols-2 rounded-md shadow-md overflow-hidden"
     >
-      <form class="p-6">
+      <form @submit="onSubmit" class="p-6">
         <h2 class="text-center text-gray-700 text-lg mt-3">会员登录</h2>
         <div class="mt-8">
           <hd-input
             placeholder-text="请输入邮箱"
             type="email"
             name="email"
-            v-model="form.account"
+            rules="required|email"
           />
           <hd-input
             placeholder-text="请输入密码"
             type="password"
             name="pass"
+            rules="required|min:8"
             class="mt-5"
-            v-model="form.password"
           />
         </div>
         <hd-button>
@@ -43,12 +43,19 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from "vue";
+import { useForm } from "vee-validate";
 
-const form = reactive({
-  account: "",
-  password: "",
-});
+const { handleSubmit } = useForm();
+
+const onSubmit = handleSubmit(
+  (values) => {
+    console.log(values);
+    alert("验证通过");
+  },
+  (opsition) => {
+    console.log(opsition);
+  }
+);
 </script>
 
 <style lang="scss">
