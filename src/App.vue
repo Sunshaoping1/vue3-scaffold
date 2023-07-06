@@ -1,30 +1,31 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+// import env from "./utils/utilEnv.d"
+// console.log(env)
+// // 没有TS的类型声明
+// console.log(typeof import.meta.env.VITE_SOME_KEY)
+
+import userApi from "@/api/userApi";
+
+(async function () {
+  const result = await userApi.info();
+  console.log(result, "info");
+})();
 </script>
 
 <template>
   <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+    <!-- <hd-button>pate</hd-button> -->
+    <router-view #default="{ Component }">
+      <Suspense>
+        <template #default>
+          <div>
+            <component :is="Component" />
+          </div>
+        </template>
+        <template #fallback> loading... </template>
+      </Suspense>
+    </router-view>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+<style scoped></style>
