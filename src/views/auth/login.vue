@@ -17,25 +17,32 @@
           <hd-input
             placeholder-text="请输入密码"
             type="password"
-            name="pass"
+            name="password"
             rules="required|min:8"
             class="mt-5"
           />
         </div>
-        <hd-button>
-          <template #default>登录</template>
-        </hd-button>
+        <div class="flex justify-center items-center">
+          <hd-button>
+            <template #default>登录</template>
+          </hd-button>
+        </div>
+        <div class="text-center mt-3">
+          <i
+            class="fa-brands fa-weixin bg-green-500 text-white rounded-full p-1 cursor-pointer"
+          ></i>
+        </div>
         <div class="flex gap-3 justify-center mt-5">
           <a-link>网站首页</a-link>
           <a-link>会员注册</a-link>
           <a-link>找回密码</a-link>
         </div>
       </form>
-      <div class="hidden md:block">
+      <div class="hidden md:block relative">
         <img
-          src="/public/imges/photo-1676647777398-b90a05ef266e.avif"
+          src="/imges/photo-1676647777398-b90a05ef266e.avif"
           alt=""
-          class="h-96 w-full object-cover"
+          class="absolute h-full w-full object-cover"
         />
       </div>
     </div>
@@ -44,18 +51,30 @@
 
 <script setup lang="ts">
 import { useForm } from "vee-validate";
+import { login } from "@/utils";
+import { ILoginData } from "@/api/userApi";
 
 const { handleSubmit } = useForm();
 
 const onSubmit = handleSubmit(
-  (values) => {
-    console.log(values);
-    alert("验证通过");
+  async (values) => {
+    console.log("login", values);
+    await login(values as ILoginData);
   },
   (opsition) => {
     console.log(opsition);
   }
 );
+</script>
+<script lang="ts">
+export default {
+  route: { name: "login", meta: { guest: true } },
+  // beforeRouteEnter(to, from, next) {
+  //   // console.log(to);
+  //   console.log("route.meta.guest", to.meta.guest);
+  //   if (to.meta.guest) next();
+  // },
+};
 </script>
 
 <style lang="scss">

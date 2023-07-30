@@ -1,7 +1,9 @@
+// 增加 ImportMetaEnv 的定义：
+
 interface ViteEnv {
-    VITE_SOME_KEY:number
     VITE_ROUTER_AUTOLOAD:boolean
     VITE_API_URL:string
+    VITE_MOCK_ENABLE:boolean
 }
 interface ImportMetaEnv extends ViteEnv{
   // readonly VITE_APP_TITLE: string

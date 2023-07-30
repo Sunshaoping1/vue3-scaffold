@@ -1,15 +1,10 @@
 <script setup lang="ts">
-// import env from "./utils/utilEnv.d"
-// console.log(env)
-// // 没有TS的类型声明
-// console.log(typeof import.meta.env.VITE_SOME_KEY)
+// import userApi from "@/api/userApi";
 
-import userApi from "@/api/userApi";
-
-(async function () {
-  const result = await userApi.info();
-  console.log(result, "info");
-})();
+// (async function () {
+//   const result = await userApi.info();
+//   console.log(result, "info");
+// })();
 </script>
 
 <template>

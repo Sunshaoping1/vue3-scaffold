@@ -1,29 +1,30 @@
 import mockjs from 'mockjs'
 
-import { MockMethod, MockConfig } from 'vite-plugin-mock'
+import { MockMethod} from 'vite-plugin-mock'
 
 const Random = mockjs.Random
 export default [
   {
-    url: '/api/info',
+    url: '/api/user/info',
     method: 'get',
-    response: ({ query }) => {
+    response: () => {
       return {
         code: 200,
         message:"请求成功",
         type:"sucsess",
         data: {
             age: 21,
-            name: 'vbase',
-            email:"@qq.com"
+            name: '只看结果',
+            avatar:"/public/imges/photo-1535957998253-26ae1ef29506.avif",
+            permissions:["base_editor","markdown_editor","article_edit"]
         },
       }
     },
   },
   {
     url: '/api/login',
-    method: 'get',
-    response: ({ query }) => {
+    method: 'post',
+    response: () => {
       return {
         code: 200,
         message:"登录成功",
@@ -33,18 +34,7 @@ export default [
         },
       }
     },
-  },
-  {
-    url: '/api/post',
-    method: 'post',
-    timeout: 2000,
-    response: {
-      code: 0,
-      data: {
-        name: 'vben',
-      },
-    },
-  },
+  }
 ] as MockMethod[]
 
 // export default function (config: MockConfig) {

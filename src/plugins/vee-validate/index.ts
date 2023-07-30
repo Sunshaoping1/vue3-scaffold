@@ -14,6 +14,7 @@ export function setupGlobalRules(){
     //中文提示消息处理
     //将@vee-validate/rules的消息提示转化为中文
     configure({
+        validateOnInput:true,
         generateMessage:localize('zh_CN',zh_CN)
     })
 }

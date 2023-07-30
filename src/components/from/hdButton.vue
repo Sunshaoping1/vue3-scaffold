@@ -1,15 +1,9 @@
 <template>
-    <button class="hd-button mt-5">
-      <slot></slot>
-    </button>
+  <button class="hd-button w-full mt-2">
+    <slot></slot>
+  </button>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts"></script>
 
-</script>
-
-<style scoped>
-  .hd-button{
-    @apply bg-violet-700 text-white w-full py-2 rounded-md  hover:bg-violet-300 duration-300;
-  }
-</style>
+<style scoped></style>

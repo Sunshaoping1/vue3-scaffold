@@ -1,22 +1,26 @@
 import $http from "@/plugins/axios/index";
 
 
-interface User {
+export interface UserInfo {
     age: number
     name: string
-    email:string
+    avatar:string
+    permissions?:string[]
 }
 
 interface LoginInfo{
     token:string
 }
-
+export interface ILoginData{
+    email:string
+    password:string
+}
 class UserApi{
     public info(){
-        return $http.get<User>("info")
+        return $http.get<UserInfo>("/user/info")
     }
-    public login(){
-        return $http.get<LoginInfo>("login")
+    public login(values: ILoginData){
+        return $http.post<LoginInfo>("/login",values)
     }
     
 }

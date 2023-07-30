@@ -3,6 +3,6 @@ interface ResponseResult<T>{
     code: number
     message:string
     type:"sucsess" | "fail"
+    errno?:0|1,
     data:T
 }
-

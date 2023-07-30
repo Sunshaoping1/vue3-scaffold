@@ -20,18 +20,22 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "paths":{
-       "@/*":["./src/*"]
-    }
+       "@/*":["./src/*"],
+       "#/*":["./types/*"]
+    },
+    //TS升级到5.x带来的规范性问题
+    // "types": ["element-plus/global","echarts","lodash"]
   },
   "include": [
+    "src/**/*.vue",
     "src/**/*.ts",
     "src/**/*.d.ts", 
     "src/**/*.tsx", 
-    "src/**/*.vue",
-    "vite.config.ts",
-    "vite/**/*.ts",
     "mock/**/*.ts",
-    "types/**/*.d.ts"
-  ],
+    "types/**/*.d.ts", 
+    "types/**/*.ts", 
+    "vite.config.ts",
+    "vite/**/*.ts" 
+],
   // "references": [{ "path": "./tsconfig.node.json" }]
 }
